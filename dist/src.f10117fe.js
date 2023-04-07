@@ -22815,7 +22815,37 @@ var Company = /** @class */function () {
   return Company;
 }();
 exports.Company = Company;
-},{"@faker-js/faker":"node_modules/@faker-js/faker/dist/esm/index.mjs"}],"src/index.ts":[function(require,module,exports) {
+},{"@faker-js/faker":"node_modules/@faker-js/faker/dist/esm/index.mjs"}],"src/Map.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Map = void 0;
+/// <reference types="@types/google.maps" />
+var Map = /** @class */function () {
+  function Map() {
+    this.customMap = new google.maps.Map(document.getElementById("map"), {
+      center: {
+        lat: 0,
+        lng: 0
+      },
+      zoom: 1
+    });
+  }
+  Map.prototype.addMarker = function (mappable) {
+    var marker = new google.maps.Marker({
+      map: this.customMap,
+      position: {
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
+      }
+    });
+  };
+  return Map;
+}();
+exports.Map = Map;
+},{}],"src/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22823,10 +22853,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 var User_1 = require("./User");
 var Company_1 = require("./Company");
+var Map_1 = require("./Map");
 var user = new User_1.User();
 var company = new Company_1.Company();
+var map = new Map_1.Map();
+map.addMarker(user);
+map.addMarker(company);
 console.log(user, company);
-},{"./User":"src/User.ts","./Company":"src/Company.ts"}],"../../Users/39349/AppData/Roaming/nvm/v16.0.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./User":"src/User.ts","./Company":"src/Company.ts","./Map":"src/Map.ts"}],"../../Users/39349/AppData/Roaming/nvm/v16.0.0/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -22851,7 +22885,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65070" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64879" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

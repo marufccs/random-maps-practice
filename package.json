@@ -3,5 +3,8 @@
     "@faker-js/faker": "^7.6.0",
     "faker": "^5.5.3",
     "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@types/google.maps": "^3.52.5"
   }
 }

@@ -7,6 +7,9 @@ export class Company {
     lat: number;
     lng: number;
   };
+  markerContent(): string {
+    return `The company's name is: ${this.name}`;
+  }
 
   constructor() {
     this.name = faker.company.name();

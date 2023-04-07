@@ -22834,12 +22834,22 @@ var Map = /** @class */function () {
     });
   }
   Map.prototype.addMarker = function (mappable) {
+    var _this = this;
     var marker = new google.maps.Marker({
       map: this.customMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    });
+    var infowindow = new google.maps.InfoWindow({
+      content: "Hello there"
+    });
+    marker.addListener("click", function () {
+      infowindow.open({
+        anchor: marker,
+        map: _this.customMap
+      });
     });
   };
   return Map;

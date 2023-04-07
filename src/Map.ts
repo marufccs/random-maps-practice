@@ -28,5 +28,14 @@ export class Map {
         lng: mappable.location.lng,
       },
     });
+    const infowindow = new google.maps.InfoWindow({
+      content: "Hello there",
+    });
+    marker.addListener("click", () => {
+      infowindow.open({
+        anchor: marker,
+        map: this.customMap,
+      });
+    });
   }
 }
